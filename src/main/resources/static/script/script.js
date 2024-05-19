@@ -45,25 +45,3 @@ document.querySelector(".close").addEventListener
     "none";
 });
 
-document.getElementById('subscribeForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-
-    fetch('/api/newsletter/subscribe', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(email),
-    })
-        .then(response => {
-            if (response.ok) {
-                alert('Subscription successful!');
-            } else {
-                alert('Subscription failed!');
-            }
-        })
-        .catch(error => {
-            alert('Subscription failed: ' + error);
-        });
-});
