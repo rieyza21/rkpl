@@ -1,0 +1,11 @@
+{
+  "name": "foodchain-website",
+  "version": "1.0.0",
+  "description": "Food chain website with newsletter and menu features",
+  "scripts": {
+    "build-css": "sass src/main/resources/static/scss:src/main/resources/static/css"
+  },
+  "devDependencies": {
+    "sass": "^1.32.8"
+  }
+}

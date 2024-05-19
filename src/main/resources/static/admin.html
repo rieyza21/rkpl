@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Newsletter</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<h1>Send Newsletter</h1>
+<form id="newsletterForm">
+    <input type="text" id="subject" placeholder="Subject" required><br>
+    <textarea id="content" placeholder="Content" required></textarea><br>
+    <button type="submit">Send Newsletter</button>
+</form>
+
+<script>
+    document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const subject = document.getElementById('subject').value;
+        const content = document.getElementById('content').value;
+
+        fetch('/api/newsletter/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ subject, content }),
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Newsletter sent successfully!');
+                } else {
+                    alert('Failed to send newsletter!');
+                }
+            })
+            .catch(error => {
+                alert('Failed to send newsletter: ' + error);
+            });
+    });
+</script>
+</body>
+</html>
